@@ -10,6 +10,7 @@ LLMには自宅サーバで動作する **LM Studio** を使用します（OpenA
 | [learn1](./learn1/) | 基本的な2エージェント会話 | `AssistantAgent` + `RoundRobinGroupChat` の最小構成 |
 | [learn2](./learn2/) | リアルタイムストリーミング出力 | `run_stream` イベントを直接処理してトークン単位で出力 |
 | [learn3](./learn3/) | Function Calling | 天気予報・計算ツールをエージェントから呼び出す |
+| [learn4](./learn4/) | SelectorGroupChat | LLMが発言者を動的に選ぶ planner/executor/critic 構成 |
 
 ## learn1 - 基本的な2エージェント会話
 
@@ -38,6 +39,16 @@ uv run python main.py
 
 ```bash
 cd learn3
+uv run python main.py
+```
+
+## learn4 - SelectorGroupChat による動的エージェント選択
+
+`planner`・`executor`・`critic` の3エージェントを LLM が動的に選択しながら進行。critic が `APPROVED` を出力するか最大10メッセージで終了。
+詳細は [learn4/README.md](./learn4/README.md) を参照。
+
+```bash
+cd learn4
 uv run python main.py
 ```
 
